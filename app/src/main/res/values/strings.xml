@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">Podomoro</string>
+    <string name="login_title">Podomoro</string>
+    <string name="login_subtitle">Masuk untuk melanjutkan sesi belajar Anda.</string>
+    <string name="email_label">Email</string>
+    <string name="email_hint">contoh@kampus.edu</string>
+    <string name="password_label">Kata Sandi</string>
+    <string name="password_hint">••••••••</string>
+    <string name="forgot_password">Lupa Kata Sandi?</string>
+    <string name="login_button">Masuk</string>
+    <string name="or_text">ATAU</string>
+    <string name="or_email_text">Atau masuk dengan email</string>
+    <string name="google_login">Masuk dengan Google</string>
+    <string name="no_account">Belum punya akun? <font color='#002B8F'><b>Daftar</b></font></string>
+    <string name="login_header">Login</string>
+    <string name="show_password">Tampilkan Kata Sandi</string>
+
+    <string name="register_title">Buat Akun</string>
+    <string name="register_subtitle">Mulai kelola waktu dan studimu dengan lebih cerdas. Bergabunglah dengan ribuan mahasiswa lainnya.</string>
+    <string name="name_label">Nama Lengkap</string>
+    <string name="name_hint">Cth. Khairul Hilmi</string>
+    <string name="inst_email_label">Email Institusi</string>
+    <string name="inst_email_hint">nama@kampus.ac.id</string>
+    <string name="university_label">Universitas</string>
+    <string name="university_hint">Pilih atau ketik universitas</string>
+    <string name="register_password_hint">Minimal 8 karakter</string>
+    <string name="register_button">Daftar Sekarang</string>
+
+    <string name="forgot_password_title">Lupa Kata Sandi</string>
+    <string name="forgot_password_subtitle">Masukkan email institusi Anda untuk menerima instruksi pemulihan kata sandi.</string>
+    <string name="send_instruction">Kirim Instruksi</string>
+    <string name="back_to_login">← Kembali ke Login</string>
+</resources>
