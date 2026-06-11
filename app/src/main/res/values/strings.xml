@@ -30,4 +30,36 @@
     <string name="forgot_password_subtitle">Masukkan email institusi Anda untuk menerima instruksi pemulihan kata sandi.</string>
     <string name="send_instruction">Kirim Instruksi</string>
     <string name="back_to_login">← Kembali ke Login</string>
+
+    <string name="greeting_format">Halo, %1$s 👋</string>
+    <string name="dashboard_subtitle">Siap untuk hari yang produktif?</string>
+    <string name="see_all">Lihat Semua</string>
+    <string name="today_schedule">Jadwal Hari Ini</string>
+    <string name="nearest_tasks">Tugas Terdekat</string>
+
+    <string name="day_mon">Sen</string>
+    <string name="day_tue">Sel</string>
+    <string name="day_wed">Rab</string>
+    <string name="day_thu">Kam</string>
+    <string name="day_fri">Jum</string>
+
+    <string name="time_kalkulus">08:00 - 09:40</string>
+    <string name="subject_kalkulus">Kalkulus Lanjut</string>
+    <string name="loc_kalkulus">Ruang 302, Gedung MIPA</string>
+    <string name="tag_kuliah">Kuliah</string>
+
+    <string name="time_sejarah">10:00 - 11:40</string>
+    <string name="subject_sejarah">Sejarah Dunia Modern</string>
+    <string name="loc_sejarah">Auditorium A</string>
+    <string name="tag_seminar">Seminar</string>
+
+    <string name="task_esai">Esai Revolusi Industri</string>
+    <string name="task_esai_due">Besok, 23:59 • Sejarah</string>
+    <string name="task_latihan">Latihan Soal Bab 4</string>
+    <string name="task_latihan_due">Rab, 12:00 • Kalkulus</string>
+
+    <string name="nav_today">Today</string>
+    <string name="nav_calendar">Calendar</string>
+    <string name="nav_tasks">Tasks</string>
+    <string name="nav_profile">Profile</string>
 </resources>
