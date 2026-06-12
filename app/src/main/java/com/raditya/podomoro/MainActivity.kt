@@ -13,6 +13,11 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import android.widget.Toast
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class MainActivity : AppCompatActivity() {
     private var isPasswordVisible = false
@@ -48,15 +53,61 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    // PERBAIKAN: Membungkus kembali kode navigasi ke dalam fungsinya yang benar
     private fun setupNavigation() {
-        val btnGoogle = findViewById<Button>(R.id.btnGoogle)
-        btnGoogle.setOnClickListener {
-            val intent = Intent(this, LoginActivity::class.java)
-            startActivity(intent)
+        val btnMasuk = findViewById<Button>(R.id.btnMasuk)
+        val etEmail = findViewById<EditText>(R.id.etEmail)
+        val etPassword = findViewById<EditText>(R.id.etPassword)
+
+        btnMasuk.setOnClickListener {
+            val email = etEmail.text.toString().trim()
+            val password = etPassword.text.toString().trim()
+
+            // Cek apakah ada kolom yang dibiarkan kosong
+            if (email.isEmpty() || password.isEmpty()) {
+                Toast.makeText(this, "Email dan Kata Sandi tidak boleh kosong!", Toast.LENGTH_SHORT)
+                    .show()
+                return@setOnClickListener
+            }
+
+            // Panggil database
+            val db = AppDatabase.getDatabase(this)
+            val userDao = db.userDao()
+
+            lifecycleScope.launch(Dispatchers.IO) {
+                // Mencari data user di database
+                val user = userDao.loginUser(email, password)
+
+                withContext(Dispatchers.Main) {
+                    if (user != null) {
+                        // JIKA COCOK: Pindah ke Dashboard dan bawa data aslinya
+                        Toast.makeText(
+                            this@MainActivity,
+                            "Selamat datang, ${user.namaLengkap}!",
+                            Toast.LENGTH_SHORT
+                        ).show()
+
+                        val intent = Intent(this@MainActivity, DashboardActivity::class.java)
+
+                        // DI SINI POSISI YANG BENAR UNTUK MENGIRIM DATA
+                        intent.putExtra("USER_NAME", user.namaLengkap)
+                        intent.putExtra("USER_EMAIL", user.email)
+
+                        startActivity(intent)
+                        finish()
+                    } else {
+                        // JIKA TIDAK COCOK
+                        Toast.makeText(
+                            this@MainActivity,
+                            "Akun tidak ditemukan atau sandi salah!",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+            }
         }
 
         val tvNoAccount = findViewById<TextView>(R.id.tvNoAccount)
-        // Ensure HTML tags in string are rendered
         tvNoAccount.text = Html.fromHtml(getString(R.string.no_account), Html.FROM_HTML_MODE_LEGACY)
         tvNoAccount.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)

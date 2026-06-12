@@ -2,9 +2,5 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
-<<<<<<< HEAD
-=======
-    <mapping directory="$PROJECT_DIR$/TUBES-PPB-KELOMPOK-3" vcs="Git" />
->>>>>>> 5054d75ac5f001603860f49840d805e1075eb49e
   </component>
 </project>

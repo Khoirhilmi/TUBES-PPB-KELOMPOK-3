@@ -1,55 +1,122 @@
 package com.raditya.podomoro
 
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
-import android.view.View
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.fragment.app.Fragment
 
 class DashboardActivity : AppCompatActivity() {
+
+    // Deklarasi variabel komponen menu
+    private lateinit var ivToday: ImageView
+    private lateinit var tvToday: TextView
+    private lateinit var ivCalendar: ImageView
+    private lateinit var tvCalendar: TextView
+    private lateinit var ivTasks: ImageView
+    private lateinit var tvTasks: TextView
+    private lateinit var ivProfile: ImageView
+    private lateinit var tvProfile: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_dashboard)
-        
-        val mainView = findViewById<View>(R.id.bottomNavigation).parent as View
+
+        val mainView = findViewById<LinearLayout>(R.id.bottomNavigation)
         ViewCompat.setOnApplyWindowInsetsListener(mainView) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            v.setPadding(systemBars.left, 0, systemBars.right, systemBars.bottom)
             insets
         }
 
-        // Menerima data dari Intent (Data antar-Activity)
-        val name = intent.getStringExtra("USER_NAME") ?: "Budi"
-        val tvGreeting = findViewById<TextView>(R.id.tvGreeting)
-        tvGreeting.text = getString(R.string.greeting_format, name)
+        // Menghubungkan ID Gambar dan Teks
+        ivToday = findViewById(R.id.ivToday)
+        tvToday = findViewById(R.id.tvToday)
+        ivCalendar = findViewById(R.id.ivCalendar)
+        tvCalendar = findViewById(R.id.tvCalendar)
+        ivTasks = findViewById(R.id.ivTasks)
+        tvTasks = findViewById(R.id.tvTasks)
+        ivProfile = findViewById(R.id.ivProfile)
+        tvProfile = findViewById(R.id.tvProfile)
 
-        setupImplicitIntent()
-    }
+        // Deklarasi tombol wadah menu
+        val menuToday = findViewById<LinearLayout>(R.id.menu_today)
+        val menuCalendar = findViewById<LinearLayout>(R.id.menu_calendar) // <-- Tambahkan ini
+        val menuTasks = findViewById<LinearLayout>(R.id.menu_tasks)
+        val menuProfile = findViewById<LinearLayout>(R.id.menu_profile)
 
-    private fun setupImplicitIntent() {
-        // Contoh Implicit Intent: Membuka browser untuk "Lihat Semua" jadwal
-        val tvSeeAll = findViewById<TextView>(R.id.tvSeeAll)
-        tvSeeAll.setOnClickListener {
-            val url = "https://www.google.com/calendar"
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-            startActivity(intent)
+
+        // Tampilkan HomeFragment saat pertama kali buka dan warnai Today
+        if (savedInstanceState == null) {
+            replaceFragment(HomeFragment())
+            updateNavColors("TODAY")
         }
 
-        // Contoh Implicit Intent: Share tugas
-        val ivTasks = findViewById<ImageView>(R.id.ivTasks)
-        ivTasks.setOnClickListener {
-            val shareIntent = Intent(Intent.ACTION_SEND).apply {
-                type = "text/plain"
-                putExtra(Intent.EXTRA_TEXT, "Ayo kerjakan tugas Esai Revolusi Industri di aplikasi Podomoro!")
+        // INTEGRASI NAVIGASI: Pindah layar sekaligus ganti warna
+        menuToday.setOnClickListener {
+            replaceFragment(HomeFragment())
+            updateNavColors("TODAY")
+        }
+        menuTasks.setOnClickListener {
+            replaceFragment(TaskFragment())
+            updateNavColors("TASKS")
+        }
+        menuProfile.setOnClickListener {
+            replaceFragment(ProfileFragment())
+            updateNavColors("PROFILE")
+        }
+        menuCalendar.setOnClickListener {  // <-- Tambahkan blok ini
+            replaceFragment(CalendarFragment())
+            updateNavColors("CALENDAR")
+        }
+    }
+
+    // Fungsi mesin penukar Fragment
+    private fun replaceFragment(fragment: Fragment) {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, fragment)
+            .commit()
+    }
+
+    // Fungsi canggih untuk mengubah warna aktif
+    private fun updateNavColors(activeMenu: String) {
+        // 1. Reset semua warna menjadi abu-abu terlebih dahulu
+        val colorGrey = ContextCompat.getColor(this, R.color.text_grey)
+        val colorActive = ContextCompat.getColor(this, R.color.accent_purple) // Ganti menjadi R.color.primary_blue jika kamu lebih suka warna biru
+
+        ivToday.setColorFilter(colorGrey)
+        tvToday.setTextColor(colorGrey)
+        ivCalendar.setColorFilter(colorGrey)
+        tvCalendar.setTextColor(colorGrey)
+        ivTasks.setColorFilter(colorGrey)
+        tvTasks.setTextColor(colorGrey)
+        ivProfile.setColorFilter(colorGrey)
+        tvProfile.setTextColor(colorGrey)
+
+        // 2. Beri warna ungu/biru pada menu yang sedang aktif
+        when (activeMenu) {
+            "TODAY" -> {
+                ivToday.setColorFilter(colorActive)
+                tvToday.setTextColor(colorActive)
             }
-            startActivity(Intent.createChooser(shareIntent, "Bagikan tugas via"))
+            "TASKS" -> {
+                ivTasks.setColorFilter(colorActive)
+                tvTasks.setTextColor(colorActive)
+            }
+            "PROFILE" -> {
+                ivProfile.setColorFilter(colorActive)
+                tvProfile.setTextColor(colorActive)
+            }
+            "CALENDAR" -> { // <-- Tambahkan ini
+                ivCalendar.setColorFilter(colorActive)
+                tvCalendar.setTextColor(colorActive)
+            }
         }
     }
 }
