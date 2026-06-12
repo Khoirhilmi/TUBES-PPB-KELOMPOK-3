@@ -9,10 +9,16 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.lifecycleScope // Pastikan ini di-import
+import com.raditya.podomoro.AppDatabase // Sesuaikan dengan lokasi package database kamu
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class LoginActivity : AppCompatActivity() {
     private var isPasswordVisible = false
@@ -29,7 +35,7 @@ class LoginActivity : AppCompatActivity() {
 
         setupPasswordToggle()
         setupNavigation()
-        setupLoginAction()
+        setupLoginAction() // Logika login database ada di sini
     }
 
     private fun setupPasswordToggle() {
@@ -52,25 +58,43 @@ class LoginActivity : AppCompatActivity() {
     private fun setupLoginAction() {
         val btnMasuk = findViewById<Button>(R.id.btnMasuk)
         val etEmail = findViewById<EditText>(R.id.etEmail)
+        val etPassword = findViewById<EditText>(R.id.etPassword) // Tambahan: Ambil view password
+
+        // Inisialisasi Database Room
+        val db = AppDatabase.getDatabase(this)
+        val userDao = db.userDao()
 
         btnMasuk.setOnClickListener {
-            val email = etEmail.text.toString()
-            // Contoh sederhana: Ambil bagian depan email sebagai nama
-            val name = if (email.isNotEmpty() && email.contains("@")) {
-                email.substringBefore("@")
-            } else if (email.isNotEmpty()) {
-                email
-            } else {
-                "Budi"
+            val email = etEmail.text.toString().trim()
+            val password = etPassword.text.toString().trim()
+
+            // 1. Validasi jika inputan kosong
+            if (email.isEmpty() || password.isEmpty()) {
+                Toast.makeText(this, "Email dan Kata Sandi tidak boleh kosong!", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
             }
 
-            // Explicit Intent: Berpindah ke DashboardActivity
-            val intent = Intent(this, DashboardActivity::class.java).apply {
-                // Mengirim data antar-Activity
-                putExtra("USER_NAME", name)
+            // 2. Jalankan Coroutine untuk cek database di background thread
+            lifecycleScope.launch(Dispatchers.IO) {
+                // Mencari user di database berdasarkan email dan password
+                val user = userDao.loginUser(email, password)
+
+                // 3. Kembali ke Main Thread untuk update UI/Pindah halaman
+                withContext(Dispatchers.Main) {
+                    if (user != null) {
+                        // Jika berhasil: Berpindah ke DashboardActivity
+                        val intent = Intent(this@LoginActivity, DashboardActivity::class.java).apply {
+                            // Mengirim nama dari database (bukan lagi potongan email)
+                            putExtra("USER_NAME", user.namaLengkap)
+                        }
+                        startActivity(intent)
+                        finish()
+                    } else {
+                        // Jika gagal: Tampilkan pesan error
+                        Toast.makeText(this@LoginActivity, "Email atau Kata Sandi salah!", Toast.LENGTH_SHORT).show()
+                    }
+                }
             }
-            startActivity(intent)
-            finish() // Menutup LoginActivity agar tidak bisa kembali dengan tombol back
         }
     }
 
