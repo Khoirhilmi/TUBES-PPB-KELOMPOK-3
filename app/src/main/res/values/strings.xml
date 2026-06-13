@@ -1,0 +1,67 @@
+<resources>
+    <string name="app_name">Podomoro</string>
+    <string name="login_title">Podomoro</string>
+    <string name="login_subtitle">Masuk untuk melanjutkan sesi belajar Anda.</string>
+    <string name="email_label">Email</string>
+    <string name="email_hint">contoh@kampus.edu</string>
+    <string name="password_label">Kata Sandi</string>
+    <string name="password_hint">••••••••</string>
+    <string name="forgot_password">Lupa Kata Sandi?</string>
+    <string name="login_button">Masuk</string>
+    <string name="or_text">ATAU</string>
+    <string name="or_email_text">Atau masuk dengan email</string>
+    <string name="google_login">Masuk dengan Google</string>
+    <string name="no_account">Belum punya akun? <font color='#002B8F'><b>Daftar</b></font></string>
+    <string name="login_header">Login</string>
+    <string name="show_password">Tampilkan Kata Sandi</string>
+
+    <string name="register_title">Buat Akun</string>
+    <string name="register_subtitle">Mulai kelola waktu dan studimu dengan lebih cerdas. Bergabunglah dengan ribuan mahasiswa lainnya.</string>
+    <string name="name_label">Nama Lengkap</string>
+    <string name="name_hint">Cth. Khairul Hilmi</string>
+    <string name="inst_email_label">Email Institusi</string>
+    <string name="inst_email_hint">nama@kampus.ac.id</string>
+    <string name="university_label">Universitas</string>
+    <string name="university_hint">Pilih atau ketik universitas</string>
+    <string name="register_password_hint">Minimal 8 karakter</string>
+    <string name="register_button">Daftar Sekarang</string>
+
+    <string name="forgot_password_title">Lupa Kata Sandi</string>
+    <string name="forgot_password_subtitle">Masukkan email institusi Anda untuk menerima instruksi pemulihan kata sandi.</string>
+    <string name="send_instruction">Kirim Instruksi</string>
+    <string name="back_to_login">← Kembali ke Login</string>
+
+    <string name="greeting_format">Halo, %1$s 👋</string>
+    <string name="dashboard_subtitle">Siap untuk hari yang produktif?</string>
+    <string name="see_all">Lihat Semua</string>
+    <string name="today_schedule">Jadwal Hari Ini</string>
+    <string name="nearest_tasks">Tugas Terdekat</string>
+
+    <string name="day_mon">Sen</string>
+    <string name="day_tue">Sel</string>
+    <string name="day_wed">Rab</string>
+    <string name="day_thu">Kam</string>
+    <string name="day_fri">Jum</string>
+
+    <string name="time_kalkulus">08:00 - 09:40</string>
+    <string name="subject_kalkulus">Kalkulus Lanjut</string>
+    <string name="loc_kalkulus">Ruang 302, Gedung MIPA</string>
+    <string name="tag_kuliah">Kuliah</string>
+
+    <string name="time_sejarah">10:00 - 11:40</string>
+    <string name="subject_sejarah">Sejarah Dunia Modern</string>
+    <string name="loc_sejarah">Auditorium A</string>
+    <string name="tag_seminar">Seminar</string>
+
+    <string name="task_esai">Esai Revolusi Industri</string>
+    <string name="task_esai_due">Besok, 23:59 • Sejarah</string>
+    <string name="task_latihan">Latihan Soal Bab 4</string>
+    <string name="task_latihan_due">Rab, 12:00 • Kalkulus</string>
+
+    <string name="nav_today">Today</string>
+    <string name="nav_calendar">Calendar</string>
+    <string name="nav_tasks">Tasks</string>
+    <string name="nav_profile">Profile</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
