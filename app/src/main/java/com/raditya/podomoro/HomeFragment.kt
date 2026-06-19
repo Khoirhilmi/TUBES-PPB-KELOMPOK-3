@@ -38,8 +38,7 @@ class HomeFragment : Fragment(), SensorEventListener {
     private val requestPermissionLauncher = registerForActivityResult(
         ActivityResultContracts.RequestPermission()
     ) { isGranted: Boolean ->
-        if (isGranted) {
-        } else {
+        if (!isGranted) {
             Toast.makeText(context, "Izin notifikasi ditolak", Toast.LENGTH_SHORT).show()
         }
     }
@@ -53,6 +52,7 @@ class HomeFragment : Fragment(), SensorEventListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         sensorManager = requireContext().getSystemService(Context.SENSOR_SERVICE) as SensorManager
         acceleration = 10f
         currentAcceleration = SensorManager.GRAVITY_EARTH
@@ -93,20 +93,17 @@ class HomeFragment : Fragment(), SensorEventListener {
             } else {
                 requireContext().startService(serviceIntent)
             }
-            Toast.makeText(context, "Memulai Musik Fokus", Toast.LENGTH_SHORT).show()
         }
 
         btnStopMusic.setOnClickListener {
             val serviceIntent = Intent(requireContext(), FocusMusicService::class.java)
             requireContext().stopService(serviceIntent)
-            Toast.makeText(context, "Musik Dihentikan", Toast.LENGTH_SHORT).show()
         }
 
         val btnStartSync = view.findViewById<Button>(R.id.btnStartSync)
         btnStartSync.setOnClickListener {
             val syncIntent = Intent(requireContext(), DataSyncIntentService::class.java)
             requireContext().startService(syncIntent)
-            Toast.makeText(context, "Sinkronisasi dimulai di background...", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -132,7 +129,6 @@ class HomeFragment : Fragment(), SensorEventListener {
 
             if (acceleration > 12) {
                 fetchDailyAdvice()
-                Toast.makeText(context, "Shake detected! Mengambil nasihat baru...", Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -141,11 +137,7 @@ class HomeFragment : Fragment(), SensorEventListener {
 
     private fun checkAndSendNotification() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            if (ContextCompat.checkSelfPermission(
-                    requireContext(),
-                    Manifest.permission.POST_NOTIFICATIONS
-                ) == PackageManager.PERMISSION_GRANTED
-            ) {
+            if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED) {
                 sendNotificationBroadcast()
             } else {
                 requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
@@ -158,7 +150,6 @@ class HomeFragment : Fragment(), SensorEventListener {
     private fun sendNotificationBroadcast() {
         val intent = Intent(requireContext(), NotificationReceiver::class.java)
         requireContext().sendBroadcast(intent)
-        Toast.makeText(context, "Mengirim broadcast notifikasi...", Toast.LENGTH_SHORT).show()
     }
 
     private fun fetchDailyAdvice() {
@@ -167,12 +158,9 @@ class HomeFragment : Fragment(), SensorEventListener {
                 val response = withContext(Dispatchers.IO) {
                     RetrofitClient.instance.getRandomAdvice()
                 }
-
                 if (response.isSuccessful && response.body() != null) {
                     val advice = response.body()?.slip?.advice
                     tvAdvice.text = "\"$advice\""
-                } else {
-                    tvAdvice.text = "Gagal mengambil nasihat hari ini."
                 }
             } catch (e: Exception) {
                 tvAdvice.text = "Cek koneksi internet Anda."

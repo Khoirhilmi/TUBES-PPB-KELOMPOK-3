@@ -78,7 +78,7 @@ class DashboardActivity : AppCompatActivity() {
 
     private fun updateNavColors(activeMenu: String) {
         val colorGrey = ContextCompat.getColor(this, R.color.text_grey)
-        val colorActive = ContextCompat.getColor(this, R.color.accent_purple) // Ganti menjadi R.color.primary_blue jika kamu lebih suka warna biru
+        val colorActive = ContextCompat.getColor(this, R.color.accent_purple)
 
         ivToday.setColorFilter(colorGrey)
         tvToday.setTextColor(colorGrey)

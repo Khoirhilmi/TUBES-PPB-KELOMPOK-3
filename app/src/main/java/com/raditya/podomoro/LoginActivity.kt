@@ -14,8 +14,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.lifecycle.lifecycleScope // Pastikan ini di-import
-import com.raditya.podomoro.AppDatabase // Sesuaikan dengan lokasi package database kamu
+import androidx.lifecycle.lifecycleScope
+import com.raditya.podomoro.AppDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
