@@ -83,10 +83,8 @@ class MainActivity : AppCompatActivity() {
                         ).show()
 
                         val intent = Intent(this@MainActivity, DashboardActivity::class.java)
-
                         intent.putExtra("USER_NAME", user.namaLengkap)
                         intent.putExtra("USER_EMAIL", user.email)
-
                         startActivity(intent)
                         finish()
                     } else {
