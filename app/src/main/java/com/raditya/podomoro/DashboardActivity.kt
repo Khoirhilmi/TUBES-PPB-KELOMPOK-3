@@ -18,6 +18,8 @@ class DashboardActivity : AppCompatActivity() {
     private lateinit var tvToday: TextView
     private lateinit var ivCalendar: ImageView
     private lateinit var tvCalendar: TextView
+    private lateinit var ivTimer: ImageView
+    private lateinit var tvTimer: TextView
     private lateinit var ivTasks: ImageView
     private lateinit var tvTasks: TextView
     private lateinit var ivProfile: ImageView
@@ -28,8 +30,8 @@ class DashboardActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_dashboard)
 
-        val mainView = findViewById<LinearLayout>(R.id.bottomNavigation)
-        ViewCompat.setOnApplyWindowInsetsListener(mainView) { v, insets ->
+        val mainLayout = findViewById<LinearLayout>(R.id.bottomNavigation)
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main_layout)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, 0, systemBars.right, systemBars.bottom)
             insets
@@ -40,6 +42,8 @@ class DashboardActivity : AppCompatActivity() {
         tvToday = findViewById(R.id.tvToday)
         ivCalendar = findViewById(R.id.ivCalendar)
         tvCalendar = findViewById(R.id.tvCalendar)
+        ivTimer = findViewById(R.id.ivTimer)
+        tvTimer = findViewById(R.id.tvTimer)
         ivTasks = findViewById(R.id.ivTasks)
         tvTasks = findViewById(R.id.tvTasks)
         ivProfile = findViewById(R.id.ivProfile)
@@ -47,7 +51,8 @@ class DashboardActivity : AppCompatActivity() {
 
         // Deklarasi tombol wadah menu
         val menuToday = findViewById<LinearLayout>(R.id.menu_today)
-        val menuCalendar = findViewById<LinearLayout>(R.id.menu_calendar) // <-- Tambahkan ini
+        val menuCalendar = findViewById<LinearLayout>(R.id.menu_calendar)
+        val menuTimer = findViewById<LinearLayout>(R.id.menu_timer)
         val menuTasks = findViewById<LinearLayout>(R.id.menu_tasks)
         val menuProfile = findViewById<LinearLayout>(R.id.menu_profile)
 
@@ -58,10 +63,18 @@ class DashboardActivity : AppCompatActivity() {
             updateNavColors("TODAY")
         }
 
-        // INTEGRASI NAVIGASI: Pindah layar sekaligus ganti warna
+        // INTEGRASI NAVIGASI
         menuToday.setOnClickListener {
             replaceFragment(HomeFragment())
             updateNavColors("TODAY")
+        }
+        menuCalendar.setOnClickListener {
+            replaceFragment(CalendarFragment())
+            updateNavColors("CALENDAR")
+        }
+        menuTimer.setOnClickListener {
+            replaceFragment(TimerFragment())
+            updateNavColors("TIMER")
         }
         menuTasks.setOnClickListener {
             replaceFragment(TaskFragment())
@@ -71,39 +84,35 @@ class DashboardActivity : AppCompatActivity() {
             replaceFragment(ProfileFragment())
             updateNavColors("PROFILE")
         }
-        menuCalendar.setOnClickListener {  // <-- Tambahkan blok ini
-            replaceFragment(CalendarFragment())
-            updateNavColors("CALENDAR")
-        }
     }
 
-    // Fungsi mesin penukar Fragment
     private fun replaceFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
             .replace(R.id.fragment_container, fragment)
             .commit()
     }
 
-    // Fungsi canggih untuk mengubah warna aktif
     private fun updateNavColors(activeMenu: String) {
-        // 1. Reset semua warna menjadi abu-abu terlebih dahulu
         val colorGrey = ContextCompat.getColor(this, R.color.text_grey)
-        val colorActive = ContextCompat.getColor(this, R.color.accent_purple) // Ganti menjadi R.color.primary_blue jika kamu lebih suka warna biru
+        val colorActive = ContextCompat.getColor(this, R.color.accent_purple)
 
-        ivToday.setColorFilter(colorGrey)
-        tvToday.setTextColor(colorGrey)
-        ivCalendar.setColorFilter(colorGrey)
-        tvCalendar.setTextColor(colorGrey)
-        ivTasks.setColorFilter(colorGrey)
-        tvTasks.setTextColor(colorGrey)
-        ivProfile.setColorFilter(colorGrey)
-        tvProfile.setTextColor(colorGrey)
+        // Reset all
+        listOf(ivToday, ivCalendar, ivTimer, ivTasks, ivProfile).forEach { it.setColorFilter(colorGrey) }
+        listOf(tvToday, tvCalendar, tvTimer, tvTasks, tvProfile).forEach { it.setTextColor(colorGrey) }
 
-        // 2. Beri warna ungu/biru pada menu yang sedang aktif
+        // Set active
         when (activeMenu) {
             "TODAY" -> {
                 ivToday.setColorFilter(colorActive)
                 tvToday.setTextColor(colorActive)
+            }
+            "CALENDAR" -> {
+                ivCalendar.setColorFilter(colorActive)
+                tvCalendar.setTextColor(colorActive)
+            }
+            "TIMER" -> {
+                ivTimer.setColorFilter(colorActive)
+                tvTimer.setTextColor(colorActive)
             }
             "TASKS" -> {
                 ivTasks.setColorFilter(colorActive)
@@ -112,10 +121,6 @@ class DashboardActivity : AppCompatActivity() {
             "PROFILE" -> {
                 ivProfile.setColorFilter(colorActive)
                 tvProfile.setTextColor(colorActive)
-            }
-            "CALENDAR" -> { // <-- Tambahkan ini
-                ivCalendar.setColorFilter(colorActive)
-                tvCalendar.setTextColor(colorActive)
             }
         }
     }

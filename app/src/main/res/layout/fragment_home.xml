@@ -27,6 +27,7 @@
                     android:id="@+id/cvProfile"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
+                    app:cardBackgroundColor="@color/card_bg"
                     app:cardCornerRadius="20dp"
                     app:cardElevation="0dp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -62,15 +63,6 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:tint="@color/primary_blue" />
-
-                <ImageView
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
-                    android:src="@drawable/ic_notification"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:tint="@color/primary_blue" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
@@ -78,7 +70,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
-                android:text="Halo, Budi 👋"
+                android:text="Halo, Budi"
                 android:textColor="@color/black"
                 android:textSize="32sp"
                 android:textStyle="bold" />
@@ -91,6 +83,44 @@
                 android:textColor="@color/text_grey"
                 android:textSize="16sp" />
 
+            <!-- QUOTE SECTION (API EXTERNAL) -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                app:cardBackgroundColor="@color/card_bg"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:id="@+id/tvQuote"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Memuat kutipan hari ini..."
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:fontFamily="serif"
+                        android:fontStyle="italic" />
+
+                    <TextView
+                        android:id="@+id/tvAuthor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:layout_marginTop="8dp"
+                        android:text=""
+                        android:textColor="@color/text_grey"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -99,59 +129,73 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
+                    android:id="@+id/llHomeDay0"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical"
-                    android:padding="8dp">
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/day_mon" android:textColor="@color/text_grey" android:textSize="12sp" />
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="14" android:textColor="@color/black" android:textSize="18sp" android:textStyle="bold" />
+                    android:padding="8dp"
+                    android:clickable="true"
+                    android:focusable="true">
+                    <TextView android:id="@+id/tvHomeDayName0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/day_mon" android:textColor="@color/text_grey" android:textSize="12sp" />
+                    <TextView android:id="@+id/tvHomeDayNum0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="--" android:textColor="@color/black" android:textSize="18sp" android:textStyle="bold" />
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/llHomeDay1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@drawable/bg_selected_date"
                     android:gravity="center"
                     android:orientation="vertical"
-                    android:paddingVertical="12dp">
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/day_tue" android:textColor="@color/white" android:textSize="12sp" />
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="15" android:textColor="@color/white" android:textSize="18sp" android:textStyle="bold" />
+                    android:padding="8dp"
+                    android:clickable="true"
+                    android:focusable="true">
+                    <TextView android:id="@+id/tvHomeDayName1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/day_tue" android:textColor="@color/text_grey" android:textSize="12sp" />
+                    <TextView android:id="@+id/tvHomeDayNum1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="--" android:textColor="@color/black" android:textSize="18sp" android:textStyle="bold" />
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/llHomeDay2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical"
-                    android:padding="8dp">
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/day_wed" android:textColor="@color/text_grey" android:textSize="12sp" />
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="16" android:textColor="@color/black" android:textSize="18sp" android:textStyle="bold" />
+                    android:padding="8dp"
+                    android:clickable="true"
+                    android:focusable="true">
+                    <TextView android:id="@+id/tvHomeDayName2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/day_wed" android:textColor="@color/text_grey" android:textSize="12sp" />
+                    <TextView android:id="@+id/tvHomeDayNum2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="--" android:textColor="@color/black" android:textSize="18sp" android:textStyle="bold" />
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/llHomeDay3"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical"
-                    android:padding="8dp">
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/day_thu" android:textColor="@color/text_grey" android:textSize="12sp" />
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="17" android:textColor="@color/black" android:textSize="18sp" android:textStyle="bold" />
+                    android:padding="8dp"
+                    android:clickable="true"
+                    android:focusable="true">
+                    <TextView android:id="@+id/tvHomeDayName3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/day_thu" android:textColor="@color/text_grey" android:textSize="12sp" />
+                    <TextView android:id="@+id/tvHomeDayNum3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="--" android:textColor="@color/black" android:textSize="18sp" android:textStyle="bold" />
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/llHomeDay4"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical"
-                    android:padding="8dp">
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/day_fri" android:textColor="@color/text_grey" android:textSize="12sp" />
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="18" android:textColor="@color/black" android:textSize="18sp" android:textStyle="bold" />
+                    android:padding="8dp"
+                    android:clickable="true"
+                    android:focusable="true">
+                    <TextView android:id="@+id/tvHomeDayName4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/day_fri" android:textColor="@color/text_grey" android:textSize="12sp" />
+                    <TextView android:id="@+id/tvHomeDayNum4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="--" android:textColor="@color/black" android:textSize="18sp" android:textStyle="bold" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -161,6 +205,7 @@
                 android:layout_marginTop="32dp">
 
                 <TextView
+                    android:id="@+id/tvScheduleHeader"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/today_schedule"
@@ -170,7 +215,8 @@
 
                 <TextView
                     android:id="@+id/tvSeeAll"
-                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:text="@string/see_all"
@@ -179,159 +225,12 @@
                     android:textStyle="bold" />
             </RelativeLayout>
 
-            <androidx.cardview.widget.CardView
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvHomeSchedule"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="0dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <View
-                        android:layout_width="4dp"
-                        android:layout_height="match_parent"
-                        android:background="@color/primary_blue" />
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="16dp">
-
-                        <TextView
-                            android:id="@+id/tvTime1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            app:drawableStartCompat="@drawable/ic_clock"
-                            android:drawablePadding="8dp"
-                            android:text="@string/time_kalkulus"
-                            android:textColor="@color/text_grey"
-                            android:textSize="12sp"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:drawableTint="@color/text_grey" />
-
-                        <TextView
-                            android:id="@+id/tvSubject1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:text="@string/subject_kalkulus"
-                            android:textColor="@color/black"
-                            android:textSize="20sp"
-                            android:textStyle="bold"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/tvTime1" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            app:drawableStartCompat="@drawable/ic_location"
-                            android:drawablePadding="8dp"
-                            android:text="@string/loc_kalkulus"
-                            android:textColor="@color/text_grey"
-                            android:textSize="13sp"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/tvSubject1"
-                            app:drawableTint="@color/text_grey" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/bg_tag_blue"
-                            android:paddingHorizontal="12dp"
-                            android:paddingVertical="4dp"
-                            android:text="@string/tag_kuliah"
-                            android:textColor="@color/white"
-                            android:textSize="12sp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="0dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <View
-                        android:layout_width="4dp"
-                        android:layout_height="match_parent"
-                        android:background="@color/accent_purple" />
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="16dp">
-
-                        <TextView
-                            android:id="@+id/tvTime2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            app:drawableStartCompat="@drawable/ic_clock"
-                            android:drawablePadding="8dp"
-                            android:text="@string/time_sejarah"
-                            android:textColor="@color/text_grey"
-                            android:textSize="12sp"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:drawableTint="@color/text_grey" />
-
-                        <TextView
-                            android:id="@+id/tvSubject2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:text="@string/subject_sejarah"
-                            android:textColor="@color/black"
-                            android:textSize="20sp"
-                            android:textStyle="bold"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/tvTime2" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            app:drawableStartCompat="@drawable/ic_location"
-                            android:drawablePadding="8dp"
-                            android:text="@string/loc_sejarah"
-                            android:textColor="@color/text_grey"
-                            android:textSize="13sp"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/tvSubject2"
-                            app:drawableTint="@color/text_grey" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/bg_tag_purple"
-                            android:paddingHorizontal="12dp"
-                            android:paddingVertical="4dp"
-                            android:text="@string/tag_seminar"
-                            android:textColor="@color/white"
-                            android:textSize="12sp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
+                android:nestedScrollingEnabled="false" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -346,6 +245,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                app:cardBackgroundColor="@color/card_bg"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="0dp">
 
@@ -396,6 +296,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
+                app:cardBackgroundColor="@color/card_bg"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="0dp">
 
