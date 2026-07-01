@@ -1,0 +1,102 @@
+<resources>
+    <string name="app_name">Podomoro</string>
+    <string name="login_title">Podomoro</string>
+    <string name="login_subtitle">Masuk untuk melanjutkan sesi belajar Anda.</string>
+    <string name="email_label">Email</string>
+    <string name="email_hint">contoh@kampus.edu</string>
+    <string name="password_label">Kata Sandi</string>
+    <string name="password_hint">••••••••</string>
+    <string name="forgot_password">Lupa Kata Sandi?</string>
+    <string name="login_button">Masuk</string>
+    <string name="or_text">ATAU</string>
+    <string name="or_email_text">Atau masuk dengan email</string>
+    <string name="google_login">Masuk dengan Google</string>
+    <string name="no_account">Belum punya akun? <font color='#002B8F'><b>Daftar</b></font></string>
+    <string name="login_header">Login</string>
+    <string name="show_password">Tampilkan Kata Sandi</string>
+    <string name="welcome_back">Selamat Datang</string>
+
+    <string name="register_title">Buat Akun</string>
+    <string name="register_subtitle">Mulai kelola waktu dan studimu dengan lebih cerdas. Bergabunglah dengan ribuan mahasiswa lainnya.</string>
+    <string name="name_label">Nama Lengkap</string>
+    <string name="name_hint">Cth. Khairul Hilmi</string>
+    <string name="inst_email_label">Email Institusi</string>
+    <string name="inst_email_hint">nama@kampus.ac.id</string>
+    <string name="university_label">Universitas</string>
+    <string name="university_hint">Pilih atau ketik universitas</string>
+    <string name="register_password_hint">Minimal 8 karakter</string>
+    <string name="register_button">Daftar Sekarang</string>
+
+    <string name="forgot_password_title">Lupa Kata Sandi</string>
+    <string name="forgot_password_subtitle">Masukkan email institusi Anda untuk menerima instruksi pemulihan kata sandi.</string>
+    <string name="send_instruction">Kirim Instruksi</string>
+    <string name="back_to_login">← Kembali ke Login</string>
+
+    <string name="greeting_format">Halo, %1$s</string>
+    <string name="dashboard_subtitle">Siap untuk hari yang produktif?</string>
+    <string name="see_all">Lihat Semua</string>
+    <string name="today_schedule">Jadwal Hari Ini</string>
+    <string name="nearest_tasks">Tugas Terdekat</string>
+    <string name="schedule_for">Jadwal %1$s</string>
+
+    <string name="day_mon">Sen</string>
+    <string name="day_tue">Sel</string>
+    <string name="day_wed">Rab</string>
+    <string name="day_thu">Kam</string>
+    <string name="day_fri">Jum</string>
+
+    <string name="time_kalkulus">08:00 – 09:40</string>
+    <string name="subject_kalkulus">Kalkulus Lanjut</string>
+    <string name="loc_kalkulus">Ruang 302, Gedung MIPA</string>
+    <string name="tag_kuliah">Kuliah</string>
+
+    <string name="time_sejarah">10:00 – 11:40</string>
+    <string name="subject_sejarah">Sejarah Dunia Modern</string>
+    <string name="loc_sejarah">Auditorium A</string>
+    <string name="tag_seminar">Seminar</string>
+
+    <string name="task_esai">Esai Revolusi Industri</string>
+    <string name="task_esai_due">Besok, 23:59 • Sejarah</string>
+    <string name="task_latihan">Latihan Soal Bab 4</string>
+    <string name="task_latihan_due">Rab, 12:00 • Kalkulus</string>
+
+    <string name="nav_today">Today</string>
+    <string name="nav_calendar">Calendar</string>
+    <string name="nav_tasks">Tasks</string>
+    <string name="nav_profile">Profile</string>
+    <string name="nav_timer">Timer</string>
+
+    <string name="test_notification">Kirim Notifikasi Uji Coba</string>
+    <string name="notification_title">Podomoro Study Reminder</string>
+    <string name="notification_message">Waktunya fokus belajar! Sesi Podomoro Anda segera dimulai.</string>
+
+    <!-- Timer / Sensor strings -->
+    <string name="timer_title">Sesi Fokus</string>
+    <string name="timer_default">25:00</string>
+    <string name="timer_ready">Siap untuk Belajar?</string>
+    <string name="flip_to_focus_title">Fitur Flip to Focus Aktif</string>
+    <string name="flip_to_focus_desc">Letakkan HP layar menghadap ke bawah untuk mulai timer fokus otomatis.</string>
+    <string name="reset_timer">Reset Timer</string>
+    <string name="timer_running">Mode Fokus Aktif (HP Face-down)</string>
+    <string name="timer_finished">Sesi Selesai! Luar biasa.</string>
+    <string name="sensor_not_available">Sensor Jarak tidak tersedia di perangkat ini.</string>
+
+    <string-array name="event_types">
+        <item>Kuliah</item>
+        <item>Diskusi</item>
+        <item>Mandiri</item>
+        <item>Ujian</item>
+    </string-array>
+
+    <!-- Calendar Dialog Strings -->
+    <string name="add_event_title">Tambah Jadwal</string>
+    <string name="hint_event_name">Nama Kegiatan (Contoh: Kuliah Umum)</string>
+    <string name="hint_event_location">Lokasi (Contoh: Ruang 301)</string>
+    <string name="hint_event_time">Jam (Contoh: 08:00)</string>
+    <string name="btn_save">Simpan</string>
+    <string name="btn_cancel">Batal</string>
+    <string name="msg_event_saved">Jadwal berhasil disimpan</string>
+    <string name="msg_fill_required">Judul dan Jam harus diisi</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

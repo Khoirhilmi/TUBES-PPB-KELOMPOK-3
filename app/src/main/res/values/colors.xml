@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Basic Colors -->
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="primary_blue">#002B8F</color>
+    <color name="accent_purple">#8B5CF6</color>
+    <color name="text_grey">#666666</color>
+    <color name="border_grey">#DDDDDD</color>
+    <color name="google_button_border">#DDDDDD</color>
+    <color name="bg_light_blue">#F8FAFF</color>
+    <color name="card_bg">#FFFFFF</color>
+    <color name="status_red">#EF4444</color>
+
+    <!-- Semantic / Extended Colors for Layouts -->
+    <color name="text_primary">#112A46</color>
+    <color name="surface_variant">#F8F9FA</color>
+    <color name="divider_color">#EEEEEE</color>
+    <color name="tag_blue_bg">#E8F0FE</color>
+    <color name="tag_blue_text">#1976D2</color>
+    <color name="card_blue_bg">#E3F2FD</color>
+    <color name="card_blue_text">#1565C0</color>
+    <color name="card_purple_bg">#F3E5F5</color>
+    <color name="card_purple_text">#7B1FA2</color>
+    <color name="error_bg">#FFEBEE</color>
+    <color name="error_text">#C62828</color>
+    <color name="text_dark_blue">#1A237E</color>
+    <color name="icon_grey">#424242</color>
+</resources>
